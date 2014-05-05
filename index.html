@@ -1,0 +1,603 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Future Grid</title>
+    <meta name="description" content="Future grid">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="dist/css/grid.css">
+    <link rel="stylesheet" href="dist/css/docs.css">
+    <link href='http://fonts.googleapis.com/css?family=Coda|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    
+    <script src="https://rawgithub.com/scottjehl/Respond/master/dest/respond.min.js"></script>
+    <script src="https://rawgithub.com/doctyper/flexie/master/dist/flexie.min.js"></script>
+
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div class="page">
+
+      
+      <header>
+        <h1 id="top" class="text-center">Future Grid</h1>
+        <p class="lead text-center">Responsive, fluid, mobile-first grid system based on flexbox and built using SASS. Contains predefined Bootstrap-inspired classes & SASS mixins.</p>
+      </header>
+      
+      <div class="grid">
+        <div class="col-12 col-md-auto">
+          <p>By default, grid is made of 12 columns and takes 100% of the available width. Columns should be placed inside container with a <code>.grid</code> class. One <code>.grid</code> container can contain any number of columns.</p>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-4">
+                <div class="placeholder content-center">.col-4</div>
+              </div>
+              <div class="col-6">
+                <div class="placeholder content-center">.col-6</div>
+              </div>
+              <div class="col-5 col-md-3">
+                <div class="placeholder content-center">.col-3</div>
+              </div>
+              <div class="col-7">
+                <div class="placeholder content-center">.col-7</div>
+              </div>
+              <div class="col-12 col-md-1">
+                <div class="placeholder content-center">.col-1</div>
+              </div>
+              <div class="col-12 col-md-1">
+                <div class="placeholder content-center">.col-1</div>
+              </div>
+            </div>
+
+            <pre>
+              <code>
+&lt;div class="grid">
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-4">
+    &lt;div class="content-center">.col-4&lt;/div>
+  &lt;/div>
+  &lt;div class="col-6">
+    &lt;div class="content-center">.col-6&lt;/div>
+  &lt;/div>
+  &lt;div class="col-5 col-md-3">
+    &lt;div class="content-center">.col-3&lt;/div>
+  &lt;/div>
+  &lt;div class="col-7">
+    &lt;div class="content-center">.col-7&lt;/div>
+  &lt;/div>
+  &lt;div class="col-12 col-md-1">
+    &lt;div class="content-center">.col-1&lt;/div>
+  &lt;/div>
+  &lt;div class="col-12 col-md-1">
+    &lt;div class="content-center">.col-1&lt;/div>
+  &lt;/div>
+&lt;/div></code>
+            </pre>
+          </div>
+                  
+         
+                  
+          <h3 id="responsive">Responsive</h3>
+          <p>Use <code>.col&#8209;md&#8209;6</code> class to use six columns starting from medium size screen.</p>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-12 col-md-6">
+                <div class="placeholder content-center">
+                  I'm full width on mobile and half-width on desktop.
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="placeholder content-center">
+                  I'm full width on mobile and half-width on desktop.
+                </div>
+              </div>
+            </div>
+
+            <pre>
+              <code>
+&lt;div class="grid">
+  &lt;div class="col-12 col-md-6">
+    &lt;div class="content-center">
+      I'm full width on mobile and half-width on desktop.
+    &lt;/div>
+  &lt;/div>
+  &lt;div class="col-12 col-md-6">
+    &lt;div class="content-center">
+      I'm full width on mobile and half-width on desktop.
+    &lt;/div>
+  &lt;/div>
+&lt;/div></code>
+            </pre>
+          </div>
+                  
+          <h3 id="nested">Nested Grids</h3>
+          <p>Grids can be nested unlimited number of times.</p>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-12 col-md-6">
+                <div class="placeholder padding-left-right">
+                  <div class="grid">
+                    <div class="col-3">
+                      <div class="placeholder content-center">1</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="placeholder content-center">2</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="placeholder content-center">3</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="placeholder content-center">4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="placeholder padding-left-right">
+                  <div class="grid">
+                    <div class="col-3">
+                      <div class="placeholder content-center">1</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="placeholder content-center">2</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="placeholder content-center">3</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="placeholder content-center">4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <pre>
+              <code>
+&lt;div class="grid">
+  &lt;div class="col-12 col-md-6">
+    &lt;div class="grid">
+      &lt;div class="col-3">
+        &lt;div class="content-center">1&lt;/div>
+      &lt;/div>
+      &lt;div class="col-3">
+        &lt;div class="content-center">2&lt;/div>
+      &lt;/div>
+      &lt;div class="col-3">
+        &lt;div class="content-center">3&lt;/div>
+      &lt;/div>
+      &lt;div class="col-3">
+        &lt;div class="content-center">4&lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+  &lt;div class="col-12 col-md-6">
+    &lt;div class="grid">
+      &lt;div class="col-3">
+        &lt;div class=" content-center">1&lt;/div>
+      &lt;/div>
+      &lt;div class="col-3">
+        &lt;div class="content-center">2&lt;/div>
+      &lt;/div>
+      &lt;div class="col-3">
+        &lt;div class="content-center">3&lt;/div>
+      &lt;/div>
+      &lt;div class="col-3">
+        &lt;div class="content-center">4&lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div></code>
+            </pre>
+          </div>
+                  
+          <h3 id="offset">Offset</h3>
+          <p>Use <code>.col&#8209;offset&#8209;2</code> class to add two-column offset.</p>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-4 col-offset-2">
+                <div class="placeholder content-center">.col-offset-2</div>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col-4">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-4 col-offset-4">
+                <div class="placeholder content-center">.col-offset-2</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid">
+  &lt;div class="col-2">
+    &lt;div class="placeholder content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-4 col-offset-2">
+    &lt;div class="placeholder content-center">.col-offset-2&lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;div class="grid">
+  &lt;div class="col-4">
+    &lt;div class="placeholder content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-4 col-offset-4">
+    &lt;div class="placeholder content-center">.col-offset-2&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+                  
+          <h3 id="spacing">Spacing</h3>
+          <p>Add <code>.space-around</code> class to <code>.grid</code> container to distribute white space around columns.</p>
+          <div class="example-box">
+            <div class="grid space-around">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+            </div>
+
+            <pre>
+              <code>
+&lt;div class="grid space-around">
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+&lt;/div> </code>
+            </pre>
+          </div>
+
+          <p>Add <code>.space-between</code> class to <code>.grid</code> container to distribute white space between columns.</p>
+          <div class="example-box">
+            <div class="grid space-between">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+            </div>
+            <pre>
+              <code>
+&lt;div class="grid space-between">
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+&lt;/div> </code>
+          </pre>
+          </div>
+                  
+          <h3 id="horizontal">Horizontal Alignment</h3>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid">
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+          <div class="example-box">
+            <div class="grid align-center">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid align-center">
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+          <div class="example-box">
+            <div class="grid align-right">
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">.col-2</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid align-right">
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">.col-2&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+                  
+          <h3 id="vertical">Vertical Alignment</h3>
+          <div class="example-box">
+            <div class="grid big-box content-center">
+              <div class="col-4 align-top">
+                <div class="placeholder content-center">
+                  .align-top
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="placeholder content-center">
+                  inherited
+                </div>
+              </div>
+              <div class="col-4 align-bottom">
+                <div class="placeholder content-center">
+                  .align-bottom
+                </div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid content-center">
+  &lt;div class="col-4 align-top">
+    &lt;div class="content-center">.align-top&lt;/div>
+  &lt;/div>
+  &lt;div class="col-4">
+    &lt;div class="content-center">inherited&lt;/div>
+  &lt;/div>
+  &lt;div class="col-4 align-bottom">
+    &lt;div class="content-center">.align-bottom&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+                  
+          <h3 id="reverse">Reverse</h3>
+          <p>Reverse order of columns by adding a <code>.reverse</code> class to grid container.</p>
+          <div class="example-box">
+            <div class="grid reverse">
+              <div class="col-2">
+                <div class="placeholder content-center">1</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">2</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">3</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">4</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">5</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">6</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid reverse">
+  &lt;div class="col-2">
+    &lt;div class="content-center">1&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">3&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">4&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">5&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">6&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+                  
+          <h3 id="order">Order</h3>
+          <p>Add a <code>.col-order-first</code> to push column to the front or <code>.col&#8209;order&#8209;last</code> to put it in the back.</p>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-2">
+                <div class="placeholder content-center">1</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">2</div>
+              </div>
+              <div class="col-2 col-order-first col-sm-order-reset col-md-order-first">
+                <div class="placeholder content-center">3</div>
+              </div>
+              <div class="col-2 col-order-last">
+                <div class="placeholder content-center">4</div>
+              </div>
+              <div class="col-2 col-sm-order-first col-md-order-reset">
+                <div class="placeholder content-center">5</div>
+              </div>
+              <div class="col-2">
+                <div class="placeholder content-center">6</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid">
+  &lt;div class="col-2">
+    &lt;div class="content-center">1&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">2&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2 col-order-first">
+    &lt;div class="content-center">3&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2 col-order-last">
+    &lt;div class="content-center">4&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">5&lt;/div>
+  &lt;/div>
+  &lt;div class="col-2">
+    &lt;div class="content-center">6&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+          </div>
+                  
+          <h3 id="grail">Holy Grail Layout</h3>
+          <p>Two fixed width sidebars on the sides and fluid width content. Content should go first in the markup but should be visible as the middle one. All three columns should be of equal height. Everything should fall down to signle-column layout for smaller screens.</p>
+          <p class="note">Read more: <a href="http://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/">Solved by Flexbox: Holy Grail Layout <small>(Philip Walton)</small></a></p>
+          <div class="example-box">
+            <div class="grid">
+              <div class="col-12 col-sm-auto">
+                <div class="placeholder content-center big-box">content</div>
+              </div>
+              <div class="col flex sidebar col-order-first">
+                <div class="placeholder content-center">left sidebar</div>
+              </div>
+              <div class="col flex sidebar">
+                <div class="placeholder content-center">right sidebar</div>
+              </div>
+            </div>
+            <pre><code>
+&lt;div class="grid">
+  &lt;div class="col-12 col-sm-auto">
+    &lt;div class="content-center content">content&lt;/div>
+  &lt;/div>
+  &lt;div class="col flex sidebar col-order-first">
+    &lt;div class="content-center">left sidebar&lt;/div>
+  &lt;/div>
+  &lt;div class="col flex sidebar">
+    &lt;div class="content-center">right sidebar&lt;/div>
+  &lt;/div>
+&lt;/div>
+            </code></pre>
+            <pre><code>
+.content {
+  height: 220px;
+}
+
+.sidebar {
+  width: 100%;
+}
+
+@media(min-width: 500px) {
+  .sidebar {
+    width: 150px;
+  }
+}
+            </code></pre>
+          </div>
+                  
+          <h3 id="overflow">Overflow Pattern</h3>
+          <p>Make a grid become a scrollable list of items on smaller screens by adding a class of <code>.slider&#8209;below&#8209;lg</code>. Don't forget, to provide hints informing user that there's more content available.</p>
+          <p class="note">Read more: <a href="http://bradfrostweb.com/blog/post/the-overflow-pattern/">The Overflow Pattern <small>(Brad Frost)</small></a></p>
+          <div class="example-box">
+            <div class="grid overflow-below-lg">
+              <div class="slide-below-lg col-lg-6">
+                <div class="placeholder-slide content-center">one</div>
+              </div>
+              <div class="slide-below-lg col-lg-6">
+                <div class="placeholder-slide content-center">two</div>
+              </div>
+              <div class="slide-below-lg col-lg-3">
+                <div class="placeholder-slide content-center">three</div>
+              </div>
+              <div class="slide-below-lg col-lg-3">
+                <div class="placeholder-slide content-center">four</div>
+              </div>
+              <div class="slide-below-lg col-lg-3">
+                <div class="placeholder-slide content-center">five</div>
+              </div>
+              <div class="slide-below-lg col-lg-3">
+                <div class="placeholder-slide content-center">six</div>
+              </div>
+            </div>
+          </div>
+                  
+          <h3 id="mixins">SASS Variables & Mixins</h3>
+          <p>You can use SASS mixins to build your own semantic layouts. Refer to the <a href="#">grid </a> project folder and read the source code to find out more.</p>
+                  
+          <h3 id="support">Browser Support</h3>
+          <p>Future Grid uses <a href="bourbon.io">Bourbon.io</a> mixins. They are up to date with <a href="http://www.w3.org/TR/2014/WD-css-flexbox-1-20140325/">2014 W3C Spec</a> and include fallbacks for <a href="http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/">2009 spec</a>.</p>
+
+          <p>Future grid should work in all modern browsers and IE10+.</p>
+
+          <footer>
+            <p>Made with love by <a href="http://www.oskar.io">Oskar Zabik</a>. Released under <a href="http://github.com/smogg/LICENSE">the MIT License</a>.</p>
+          </footer>
+
+        </div>
+        <div class="col right-nav col-order-first col-md-order-reset">
+          <ul id="nav" class="grid overflow-below-sm">
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#responsive">Responsive</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#nested">Nested Grids</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#offset">Offset</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#spacing">Spacing</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#horizontal">Horizontal Alignment</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#vertical">Vertical Alignment</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#reverse">Reverse</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#order">Order</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#grail">Holy Grail Layout</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#overflow">Overflow Pattern</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#mixins">SASS & Mixins</a></li>
+            <li class="slide-below-sm col-sm-3 col-md-12"><a href="#support">Browser Support</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://github.com/smogg/future-grid"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+    
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script src="source/scripts/docs.js"></script>
+
+  </body>
+</html>

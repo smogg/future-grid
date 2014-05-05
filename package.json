@@ -1,0 +1,15 @@
+{
+  "name": "future-grid",
+  "version": "1.0.0",
+  "author": "Oskar Zabik",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smogg/future-gramework.git"
+  },
+  "dependencies": {
+    "gulp": "~3.6.2",
+    "gulp-sass": "~0.7.1",
+    "gulp-rename": "~1.2.0"
+  }
+}

@@ -1,0 +1,172 @@
+@import "grid/flex-mixins";
+@import "grid/grid-mixins";
+@import "grid/order-mixins";
+@import "grid/alignment-mixins";
+@import "grid/overflow-pattern-mixins";
+
+@import "base";
+
+
+
+// =================================
+// Grid container.
+// =================================
+.grid {
+	@include grid-container($bp-baby-bear, $bp-mama-bear, $bp-papa-bear,
+							 $gutter, $gutter-sm, $gutter-md, $gutter-lg);
+}
+
+
+
+// =================================
+// Columns
+// e.g.: .col-md-8
+// e.g.: .col-md-auto
+// =================================
+@include columns($columns, $gutter, $mobile-prefix);                   // mobile
+@include auto-width-columns($gutter, $mobile-prefix);
+@include columns($columns, $gutter-sm, $small-prefix, $bp-baby-bear);  // small
+@include auto-width-columns($gutter, $small-prefix, $bp-baby-bear);
+@include columns($columns, $gutter-md, $medium-prefix, $bp-mama-bear); // medium
+@include auto-width-columns($gutter, $medium-prefix, $bp-mama-bear);
+@include columns($columns, $gutter-lg, $large-prefix,  $bp-papa-bear); // large
+@include auto-width-columns($gutter, $large-prefix, $bp-papa-bear);
+
+
+
+
+// =================================
+// Offsets
+// e.g.: .col-sm-offset-2
+// =================================
+@include offsets($columns, $mobile-prefix);
+@include offsets($columns, $small-prefix, $bp-baby-bear);
+@include offsets($columns, $medium-prefix, $bp-mama-bear);
+@include offsets($columns, $large-prefix, $bp-papa-bear);
+
+
+
+// =================================
+// Add flex display 
+// (for example, if you want 100% height sidebar in Holy Grail Layout)
+// =================================
+.flex {
+	@include display(flex);
+}
+
+
+
+// =================================
+// Adds column padding.
+// =================================
+.col {
+	margin-left: $gutter;
+}
+
+
+
+// =================================
+// Reverse
+// e.g.: .col-sm-order-first.col-lg-order-reset
+// =================================
+.reverse {
+	@include flex-direction(row-reverse);
+}
+
+
+
+// =================================
+// Order
+// =================================
+@include order-classes($mobile-prefix);
+@include order-classes($small-prefix, $bp-baby-bear);
+@include order-classes($medium-prefix, $bp-mama-bear);
+@include order-classes($large-prefix, $bp-papa-bear);
+
+
+
+// =================================
+// Alignment
+// =================================
+.content-center {
+	@include center-content;
+}
+
+.align-top {
+	@include align-top;
+}
+
+.align-right {
+	@include justify-content(flex-end);
+}
+
+.align-bottom {
+	@include align-bottom;
+}
+
+.align-left {
+	@include justify-content(flex-start);
+}
+
+.align-center {
+	@include justify-content(center);
+}
+
+
+
+// =================================
+// Spacing
+// =================================
+.space-around {
+	@include justify-content(space-around);
+}
+
+.space-between {
+	@include justify-content(space-between);
+}
+
+
+
+// =================================
+// Overflow pattern
+// This element doesn't take mobile-first approach like others
+// e.g.: .overflow-below-lg on .grid and .slide-below-lg on .col-*
+// =================================
+.overflow {	@include overflow-container; }
+.slide    { @include overflow-slide; }
+
+.overflow-below-sm {
+	@media screen and (max-width: $bp-baby-bear) {
+		@include overflow-container;
+	}
+}
+
+.slide-below-sm {
+	@media screen and (max-width: $bp-baby-bear) {
+		@include overflow-slide;
+	}
+}
+
+.overflow-below-md {
+	@media screen and (max-width: $bp-mama-bear) {
+		@include overflow-container;
+	}
+}
+
+.slide-below-md {
+	@media screen and (max-width: $bp-mama-bear) {
+		@include overflow-slide;
+	}
+}
+
+.overflow-below-lg {
+	@media screen and (max-width: $bp-papa-bear) {
+		@include overflow-container;
+	}
+}
+
+.slide-below-lg {
+	@media screen and (max-width: $bp-papa-bear) {
+		@include overflow-slide;
+	}
+}

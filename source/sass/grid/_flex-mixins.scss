@@ -1,0 +1,218 @@
+// Flexible Box Model mixins
+// Borrowed from the mighty SASS mixin library - Bourbon
+// Visit http://bourbon.io/docs/#flexbox for more information
+@mixin prefixer($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      -webkit-#{$property}: $value;
+    }
+    @else if $prefix == moz {
+      -moz-#{$property}: $value;
+    }
+    @else if $prefix == ms {
+      -ms-#{$property}: $value;
+    }
+    @else if $prefix == o {
+      -o-#{$property}: $value;
+    }
+    @else if $prefix == spec {
+      #{$property}: $value;
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+
+
+@mixin display($value) {
+	//  flex | inline-flex
+  @if $value == "flex" {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox; // 2011 (IE 10)
+    display: flex;
+  }
+
+  @elseif $value == inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+
+  @else {
+      display: $value;
+  }
+}
+
+
+
+@mixin flex-wrap($value: nowrap) {
+    // Alt values.
+    $alt-value: $value;
+    @if $value == nowrap {
+        $alt-value: single;
+    }
+
+    @elseif $value == wrap {
+        $alt-value: multiple;
+    }
+
+    @elseif $value == "wrap-reverse" {
+        $alt-value: multiple;
+    }
+
+    @include prefixer(box-lines, $alt-value, webkit moz spec);
+    @include prefixer(flex-wrap, $value, webkit moz ms spec);
+}
+
+
+
+@mixin order($int: 0) {
+    // 2009
+    @include prefixer(box-ordinal-group, $int, webkit moz spec);
+
+    // 2012
+    @include prefixer(order, $int, webkit moz spec);
+
+    // 2011 (IE 10)
+    -ms-flex-order: $int;
+}
+
+
+
+@mixin flex-grow($number: 0) {
+    @include prefixer(flex-grow, $number, webkit moz spec);
+    -ms-flex-positive: $number;
+}
+
+
+
+@mixin flex-basis($width: auto) {
+    @include prefixer(flex-basis, $width, webkit moz spec);
+    -ms-flex-preferred-size: $width;
+}
+
+
+
+@mixin justify-content ($value: flex-start) {
+
+    // Alt values.
+    $alt-value: $value;
+    @if $value == "flex-start" {
+        $alt-value: start;
+    }
+
+    @elseif $value == "flex-end" {
+        $alt-value: end;
+    }
+
+    @elseif $value == "space-between" {
+        $alt-value: justify;
+    }
+
+    @elseif $value == "space-around" {
+        $alt-value: center;
+    }
+
+    // 2009
+    @include prefixer(box-pack, $alt-value, webkit moz spec);
+
+    // 2012
+    @include prefixer(justify-content, $value, webkit moz ms o spec);
+
+    // 2011 (IE 10)
+    -ms-flex-pack: $alt-value;
+}
+
+
+
+@mixin align-items($value: stretch) {
+
+    $alt-value: $value;
+
+    @if $value == "flex-start" {
+        $alt-value: start;
+    }    
+
+    @elseif $value == "flex-end" {
+        $alt-value: end;
+    }
+
+    // 2009
+    @include prefixer(box-align, $alt-value, webkit moz spec);
+
+    // 2012
+    @include prefixer(align-items, $value, webkit moz ms o spec);
+    
+    // 2011 (IE 10)
+    -ms-flex-align: $alt-value;    
+}
+
+
+
+@mixin align-self($value: auto) {
+
+    $value-2011: $value;
+    @if $value == "flex-start" {
+        $value-2011: start;
+    }    
+
+    @elseif $value == "flex-end" {
+        $value-2011: end;
+    }
+
+    // 2012
+    @include prefixer(align-self, $value, webkit moz spec);
+
+    // 2011 (IE 10)
+    -ms-flex-item-align: $value-2011;
+}
+
+
+
+@mixin flex-direction($value: row) {
+
+    // Alt values.
+    $value-2009: $value;
+    $value-2011: $value;
+    $direction: "normal";
+
+    @if $value == row {
+        $value-2009: horizontal;
+    }
+
+    @elseif $value == "row-reverse" {
+        $value-2009: horizontal;
+        $direction: reverse;
+    }
+
+    @elseif $value == column {
+        $value-2009: vertical;
+    }
+
+    @elseif $value == "column-reverse" {
+        $value-2009: vertical;
+        $direction: reverse;
+    }
+
+    // 2009
+    @include prefixer(box-orient, $value-2009, webkit moz spec);
+    @if $direction == "reverse" {
+        @include prefixer(box-direction, $direction, webkit moz spec);
+    }
+
+    // 2012
+    @include prefixer(flex-direction, $value, webkit moz spec);
+
+    // 2011 (IE 10)
+    -ms-flex-direction: $value;
+}

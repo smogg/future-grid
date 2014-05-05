@@ -1,0 +1,153 @@
+// =================================
+// Creates @media (min-width) breakpoint
+// =================================
+@mixin breakpoint($min-width) {
+	@media screen and (min-width: #{$min-width}) {
+		@content;
+	}
+}
+
+
+
+// =================================
+// Adds half size of $padding to left & right side of node.
+// =================================
+@mixin vertical-padding($padding) {
+	padding-left: #{$padding/2};
+	padding-right: #{$padding/2};
+}
+
+
+
+// =================================
+// Creates flex wrapper for columns
+// =================================
+@mixin grid-container($bp-baby-bear, $bp-mama-bear, $bp-papa-bear,
+					 $gutter, $gutter-sm, $gutter-md, $gutter-lg) {
+	// display
+  @include display(flex);
+  // wrap
+  @include flex-wrap(wrap);
+	
+	margin-left: -$gutter;
+
+	@include breakpoint($bp-baby-bear) {
+		margin-left: -$gutter-sm;
+	}
+
+	@include breakpoint($bp-mama-bear) {
+		margin-left: -$gutter-md;
+	}
+
+	@include breakpoint($bp-papa-bear) {
+		margin-left: -$gutter-lg;
+	}
+}
+
+
+
+// =================================
+// Node will take available space
+// =================================
+@mixin auto-width-column($gutter, $breakpoint: null) {
+	@if $breakpoint {
+		@include breakpoint($breakpoint) {
+			@include flex-grow(1);
+			@include flex-basis(0);
+			max-width: 100%; // prevent IE from making this node freakin wide
+		}
+	} @else {
+		@include flex-grow(1);
+		margin-left: $gutter;
+		max-width: 100%;
+	}
+}
+
+
+
+// =================================
+// Create auto-width node with given prefix & breakpoint
+// =================================
+@mixin auto-width-columns($gutter, $prefix, $breakpoint: null) {
+	@if $breakpoint {
+		.#{$prefix + "auto"} {
+			@include auto-width-column($gutter, $breakpoint);
+		}
+	} @else {
+		.#{$prefix + "auto"} {
+			@include auto-width-column($gutter);
+		}
+	}
+}
+
+
+
+
+// =================================
+// Creates a column.
+// =================================
+@mixin column($total-columns, $column-size, $gutter) {
+	// IE10+ doesn't respect box-sizing for some reason, so "width" wouldn't work.
+	max-width: #{100/$total-columns * $column-size + "%"};
+	@include flex-basis(#{100/$total-columns * $column-size + "%"});
+	@include flex-grow(0);
+	padding-left: $gutter;
+	-moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+
+
+
+// =================================
+// Creates set of columns (inside media query if breakpoint passed)
+// =================================
+@mixin columns($columns, $gutter, $prefix: "col-", $breakpoint: null) {
+	@if $breakpoint {
+		@for $column from 1 to $columns + 1 {
+			.#{$prefix + $column} {
+				@include breakpoint($breakpoint) {
+					@include column($columns, $column, $gutter);
+				}
+			}
+		}
+	} @else {
+		@for $column from 1 to $columns + 1 {
+			.#{$prefix + $column} {
+				@include column($columns, $column, $gutter);
+			}
+		}
+	}
+}
+
+
+
+// =================================
+// Creates an offset.
+// =================================
+@mixin offset($total-columns, $offset-columns) {
+	margin-left: #{100/$total-columns * $offset-columns + "%"};
+}
+
+
+
+// =================================
+// Creates set of offsets
+// =================================
+@mixin offsets($columns, $prefix, $breakpoint: null) {
+	@if $breakpoint {
+		@for $column from 1 to $columns + 1 {
+			@include breakpoint($breakpoint) {
+				.#{$prefix + "offset-" + $column} {
+					@include offset($columns, $column);
+				}
+			}
+		}
+	} @else {
+		@for $column from 1 to $columns + 1 {
+			.#{$prefix + "offset-" + $column} {
+				@include offset($columns, $column);
+			}
+		}
+	}
+}

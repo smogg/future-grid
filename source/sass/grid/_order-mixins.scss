@@ -1,0 +1,57 @@
+// =================================
+// Makes node first inside .grid container
+// =================================
+@mixin first {
+	@include order(-1);
+}
+
+
+
+// =================================
+// Makes node last inside container.
+// =================================
+@mixin last {
+	@include order(1);
+}
+
+
+
+// =================================
+// Reverts node to it's original position.
+// Used for screen size dependant ordering.
+// =================================
+@mixin reset-order {
+	@include order(0);
+}
+
+
+
+// =================================
+// Creates order classes (inside breakpoint if provided).
+// Source order is important.
+// =================================
+@mixin order-classes($prefix, $breakpoint: null) {
+	@if $breakpoint {
+		@include breakpoint($breakpoint) {
+			.#{$prefix + "order-first"} {
+				@include first;
+			}
+			.#{$prefix + "order-last"} {
+				@include last;
+			}
+			.#{$prefix + "order-reset"} {
+				@include reset-order;
+			}
+		}
+	} @else {
+		.#{$prefix + "order-first"} {
+			@include first;
+		}
+		.#{$prefix + "order-last"} {
+			@include last;
+		}
+		.#{$prefix + "order-reset"} {
+			@include reset-order;
+		}
+	}
+}
